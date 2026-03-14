@@ -10,7 +10,7 @@ Personal website for **Ahmed Nasr** — ML Engineer & Researcher.
 
 - Senior ML Engineer at Zazmic (Google Cloud Partner)
 - Previously: Senior ML Engineer at Solutions by STC (NEOM)
-- M.Sc. Researcher at Cairo University — Physics-Informed Generative Models
+- M.Sc. Researcher at Cairo University — Physics-Informed ML Models
 - Based in Cairo, Egypt
 
 ## Tech Stack
