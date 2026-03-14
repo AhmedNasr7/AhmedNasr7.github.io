@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Ahmed Nasr</title>
+    <meta name="description"
+        content="Blog by Ahmed Nasr — thoughts on ML engineering, physics-informed ML, computer vision, and building production systems.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .blog-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .blog-hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+
+        .blog-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.4s;
+        }
+
+        .blog-hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+
+        .blog-topics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.7s;
+        }
+
+        .blog-topic {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+            background: var(--accent-bg);
+            color: var(--accent);
+            border: 1px solid rgba(42, 143, 175, 0.18);
+        }
+
+        .blog-status {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.85s;
+        }
+
+        .blog-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 2.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 1s;
+        }
+
+        .blog-back:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Navigation ── -->
+    <nav id="navbar" class="scrolled">
+        <a href="/" class="nav-logo">Ahmed Nasr</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/#about" onclick="closeNav()">About</a></li>
+            <li><a href="/#research-focus" onclick="closeNav()">Research</a></li>
+            <li><a href="/#experience" onclick="closeNav()">Experience</a></li>
+            <li><a href="/#skills" onclick="closeNav()">Skills</a></li>
+            <li><a href="/blog.html" onclick="closeNav()" style="color: var(--accent);">Blog</a></li>
+            <li><a href="/#contact" onclick="closeNav()">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="blog-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="blog-hero-content">
+            <div class="blog-icon">✍️</div>
+            <h1>Blog</h1>
+            <p>
+                A space for writing about my general interests, Machine Learning, research, and things I'm learning
+                along the way. Coming soon.
+            </p>
+            <div class="blog-topics">
+                <span class="blog-topic">ML Engineering</span>
+                <span class="blog-topic">Physics-Informed ML</span>
+                <span class="blog-topic">Computer Vision</span>
+                <span class="blog-topic">General Interests</span>
+                <span class="blog-topic">Research Notes</span>
+            </div>
+            <p class="blog-status">✦ Posts coming soon</p>
+            <a href="/" class="blog-back">← Back to Home</a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
