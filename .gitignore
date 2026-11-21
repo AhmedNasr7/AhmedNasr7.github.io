@@ -9,12 +9,11 @@ Thumbs.db
 *.swo
 *~
 
-# Private data (personal info, plans, notes)
-private/
-
-# Previous work (React/Vite project — archived)
-previous_work/
-
-# Node (in case of future tooling)
+# Node / Astro
 node_modules/
-package-lock.json
+dist/
+.astro/
+
+# Env files
+.env
+.env.*
