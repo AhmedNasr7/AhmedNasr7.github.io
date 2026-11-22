@@ -2,7 +2,7 @@
 
 Personal site of Ahmed Nasr, Machine Learning & Research Engineer. Live at <https://ahmednasr7.github.io>.
 
-Static site built with [Astro](https://astro.build). No UI framework, about 2 KB of JavaScript, light and dark themes.
+Static site built with [Astro](https://astro.build). No UI framework, about 2 KB of JavaScript, light theme by default with a dark toggle.
 
 ## Run locally
 
