@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+const topics = ['ML engineering', 'Physics-informed ML', 'LLM training', 'Computer vision', 'Production systems'];
+---
+<Base title="Writing · Ahmed Nasr" description="Notes on ML engineering, physics-informed ML, LLM training, computer vision, and production systems. Coming soon.">
+  <section class="container page" aria-labelledby="blog-title">
+    <p class="mono eyebrow">Writing</p>
+    <h1 id="blog-title">Coming soon</h1>
+    <p class="page__lede">Notes on ML engineering and research.</p>
+    <ul class="chips" aria-label="Planned topics">{topics.map((t) => <li>{t}</li>)}</ul>
+    <a class="btn btn--ghost" href="/"><Icon name="arrow" size={16} /> Back home</a>
+  </section>
+</Base>

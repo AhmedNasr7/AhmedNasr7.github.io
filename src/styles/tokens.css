@@ -1,0 +1,56 @@
+/* Design tokens. Light is the default; dark applies via [data-theme="dark"]. */
+:root {
+  color-scheme: light;
+
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #eef3f7;
+  --text: #121a27;
+  --text-2: #3f4b5f;
+  --muted: #5b6a7f;
+  --accent: #1c7a97;          /* text-safe teal (AA on --bg and --surface) */
+  --accent-strong: #2a8faf;   /* brand teal, decorative use */
+  --accent-soft: rgba(42, 143, 175, 0.09);
+  --accent-line: rgba(42, 143, 175, 0.28);
+  --border: rgba(18, 26, 39, 0.09);
+  --border-strong: rgba(18, 26, 39, 0.16);
+  --shadow: 0 1px 2px rgba(18, 26, 39, 0.04), 0 8px 24px rgba(18, 26, 39, 0.06);
+  --focus: #1c7a97;
+  --field-rgb: 42, 143, 175;  /* PDE canvas colour */
+  --field-alpha: 0.55;
+
+  --font-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 128px;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --max: 1200px;
+  --measure: 68ch;
+  --nav-h: 64px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #121212;
+  --surface: #1a1a1a;
+  --surface-2: #222222;
+  --text: #ededed;
+  --text-2: #b8b8b8;
+  --muted: #919191;
+  --accent: #62c6e3;
+  --accent-strong: #4fb8d8;
+  --accent-soft: rgba(98, 198, 227, 0.10);
+  --accent-line: rgba(98, 198, 227, 0.30);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --focus: #62c6e3;
+  --field-rgb: 98, 198, 227;
+  --field-alpha: 0.42;
+}
