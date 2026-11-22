@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ahmednasr7.github.io/sitemap.xml

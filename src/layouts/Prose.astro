@@ -1,0 +1,13 @@
+---
+// Long-form layout for future blog posts (src/content/blog/). Not used yet.
+import Base from './Base.astro';
+interface Props { title: string; description?: string; date?: Date }
+const { title, description, date } = Astro.props;
+---
+<Base title={`${title} · Ahmed Nasr`} description={description}>
+  <article class="container page">
+    {date && <p class="mono muted"><time datetime={date.toISOString()}>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</time></p>}
+    <h1>{title}</h1>
+    <div class="prose"><slot /></div>
+  </article>
+</Base>

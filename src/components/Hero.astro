@@ -1,0 +1,51 @@
+---
+import { Picture } from 'astro:assets';
+import portrait from '../assets/ahmed-nasr.jpg';
+import { profile } from '../data/profile';
+import Icon from './Icon.astro';
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <div class="hero__id">
+        <Picture
+          src={portrait}
+          alt={`Portrait of ${profile.name}`}
+          width={72}
+          height={72}
+          widths={[72, 144]}
+          sizes="72px"
+          formats={['avif', 'webp']}
+          class="hero__portrait"
+          loading="eager"
+        />
+        <p class="hero__eyebrow mono">{profile.title}</p>
+      </div>
+      <h1 id="hero-title">{profile.name}</h1>
+      <p class="hero__lede">{profile.positioning}</p>
+      <p class="hero__sub">{profile.interests}</p>
+      <ul class="hero__now mono" aria-label="Currently">
+        {profile.currentLine.map((l) => <li>{l}</li>)}
+      </ul>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#contact">Get in touch <Icon name="arrow" size={16} /></a>
+        <div class="hero__icons">
+          <a class="icon-btn" href={profile.links.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" /></a>
+          <a class="icon-btn" href={profile.links.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+          <a class="icon-btn" href={`mailto:${profile.email}`} aria-label="Email"><Icon name="mail" /></a>
+        </div>
+      </div>
+    </div>
+    <canvas class="hero__landscape" data-landscape aria-hidden="true"></canvas>
+  </div>
+</section>
+
+<script>
+  import { initLandscape } from '../scripts/landscape';
+  const c = document.querySelector<HTMLCanvasElement>('[data-landscape]');
+  if (c && window.matchMedia('(min-width: 960px)').matches) {
+    const start = () => initLandscape(c);
+    if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 800 });
+    else setTimeout(start, 200);
+  }
+</script>

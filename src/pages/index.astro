@@ -1,0 +1,194 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Icon from '../components/Icon.astro';
+import { profile } from '../data/profile';
+import { work } from '../data/work';
+import { thesis, publications } from '../data/research';
+import { experience } from '../data/experience';
+import { skills } from '../data/skills';
+import { education } from '../data/education';
+import { activities, certificates } from '../data/activities';
+---
+<Base home>
+  <Hero />
+
+  <section class="section" aria-labelledby="work">
+    <div class="container section__grid">
+      <SectionHeader num="01" title="Selected work" id="work" />
+      <div class="work-grid">
+        {work.map((w) => (
+          <article class="card work reveal">
+            <p class="work__meta mono"><span class="tag">{w.tag}</span><span>{w.context}</span></p>
+            <h3>{w.title}</h3>
+            <p class="work__problem">{w.problem}</p>
+            {w.result && (
+              <p class="work__result"><span class="mono">Result</span> {w.result}</p>
+            )}
+            <details class="work__details">
+              <summary class="mono">What I built</summary>
+              <ul>{w.built.map((b) => <li>{b}</li>)}</ul>
+            </details>
+            <ul class="chips chips--sm" aria-label="Stack">
+              {w.stack.map((s) => <li>{s}</li>)}
+            </ul>
+            {w.links && (
+              <p class="work__links">
+                {w.links.map((l) => <a class="work__link mono" href={l.href} target="_blank" rel="noopener">{l.label} <Icon name="external" size={13} /></a>)}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="research">
+    <div class="container section__grid">
+      <SectionHeader num="02" title="Research" id="research" />
+      <div class="research">
+        <article class="card research__lead reveal">
+          <p class="mono eyebrow">{thesis.label}</p>
+          <h3>{thesis.title}</h3>
+          <p>{thesis.summary}</p>
+        </article>
+        <div class="research__cols">
+          <div class="reveal">
+            <h3 class="subhead mono">Publication</h3>
+            <ul class="plain-list">
+              {publications.map((p) => (
+                <li>
+                  <p class="pub__authors">
+                    {p.authors.map((a, i) => (
+                      <>{a === p.self ? <strong>{a}</strong> : a}{i < p.authors.length - 1 ? ', ' : ''}</>
+                    ))}
+                  </p>
+                  <p class="pub__title">"{p.title}"</p>
+                  <p class="muted"><em>{p.venue}</em>, {p.year}.</p>
+                  <a class="mono" href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">DOI: {p.doi}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="experience">
+    <div class="container section__grid">
+      <SectionHeader num="03" title="Experience" id="experience" />
+      <ol class="timeline">
+        {experience.map((r) => {
+          const shown = r.visible ? r.bullets.slice(0, r.visible) : r.bullets;
+          const more = r.visible ? r.bullets.slice(r.visible) : [];
+          return (
+            <li class:list={['timeline__item reveal', { 'timeline__item--compact': r.compact }]}>
+              <div class="timeline__head">
+                <h3>{r.title}</h3>
+                <p class="timeline__dates mono">{r.dates}</p>
+              </div>
+              <p class="timeline__org"><strong>{r.company}</strong> <span class="muted">· {r.location}</span></p>
+              {r.note && <p class="timeline__note mono">{r.note}</p>}
+              <ul class="timeline__bullets">{shown.map((b) => <li>{b}</li>)}</ul>
+              {more.length > 0 && (
+                <details class="timeline__more">
+                  <summary class="mono">{more.length} more</summary>
+                  <ul class="timeline__bullets">{more.map((b) => <li>{b}</li>)}</ul>
+                </details>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="education">
+    <div class="container section__grid">
+      <SectionHeader num="04" title="Education" id="education" />
+      <div class="edu">
+        <div class="edu__list">
+          {education.map((e) => (
+            <article class="card reveal">
+              <div class="timeline__head">
+                <h3>{e.degree}</h3>
+                <p class="timeline__dates mono">{e.dates}</p>
+              </div>
+              <p class="timeline__org"><strong>{e.school}</strong></p>
+              <dl class="kv">
+                {e.details.map((d) => (<><dt class="mono">{d.label}</dt><dd>{d.value}</dd></>))}
+              </dl>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="skills">
+    <div class="container section__grid">
+      <SectionHeader num="05" title="Skills" id="skills" />
+      <div class="skills">
+        {skills.map((g) => (
+          <div class="skills__group reveal">
+            <h3 class="subhead mono">{g.group}</h3>
+            <ul class="chips">{g.items.map((s) => <li>{s}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="activities">
+    <div class="container section__grid">
+      <SectionHeader num="06" title="Activities & certificates" id="activities" />
+      <div class="edu">
+                <ul class="activities">
+          {activities.map((a) => (
+            <li class="activity reveal">
+              <p class="activity__year mono">{a.year}</p>
+              <div>
+                <p class="activity__title">{a.title}</p>
+                <p class="muted activity__meta">{a.meta}</p>
+                {a.bullets.length > 0 && <ul class="activity__bullets">{a.bullets.map((b) => <li>{b}</li>)}</ul>}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="subhead mono reveal">Certificates</h3>
+        <ul class="certs">
+          {certificates.map((c) => (
+            <li class="card cert reveal">
+              <a href={c.href} target="_blank" rel="noopener" class="cert__link">
+                <Image src={c.thumb} alt={`First page of the ${c.title} certificate`} width={320} widths={[320, 640]} sizes="(min-width: 768px) 320px, 100vw" class="cert__thumb" />
+                <span class="cert__body">
+                  <span class="cert__title">{c.title}</span>
+                  <span class="muted cert__issuer">{c.issuer} · {c.year}</span>
+                  <span class="cert__cta mono">View certificate <Icon name="external" size={13} /><span class="sr-only"> (PDF, opens in a new tab)</span></span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="contact">
+    <div class="container section__grid">
+      <SectionHeader num="07" title="Contact" id="contact" />
+      <div class="contact reveal">
+        <p class="contact__line">{profile.contactLine}</p>
+        <ul class="contact__links">
+          <li><a class="btn btn--primary" href={`mailto:${profile.email}`}><Icon name="mail" size={17} /> {profile.email}</a></li>
+          <li><a class="btn btn--ghost" href={profile.links.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" size={16} /> LinkedIn</a></li>
+          <li><a class="btn btn--ghost" href={profile.links.github} target="_blank" rel="noopener"><Icon name="github" size={16} /> GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
